@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.arenareturns</groupId>
+    <groupId>com.arena_returns</groupId>
     <artifactId>SimpleNet</artifactId>
     <version>1.6.6</version>
 
@@ -23,7 +23,7 @@
         <developer>
             <name>Arena Returns</name>
             <email>contact@arena-returns.com</email>
-            <organization>com.arenareturns</organization>
+            <organization>com.arena_returns</organization>
             <organizationUrl>https://github.com/ArenaReturns/SimpleNet</organizationUrl>
         </developer>
         <developer>
@@ -176,7 +176,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <argLine>--add-opens com.arenareturns.simplenet/com.arenareturns.simplenet=ALL-UNNAMED</argLine>
+                    <argLine>--add-opens com.arena_returns.simplenet/com.arena_returns.simplenet=ALL-UNNAMED</argLine>
                 </configuration>
             </plugin>
             <plugin>

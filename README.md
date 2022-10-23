@@ -1,4 +1,4 @@
-<img src="https://maven-badges.herokuapp.com/maven-central/com.arenareturns/SimpleNet/badge.svg"> <img src="http://githubbadges.com/star.svg?user=ArenaReturns&repo=SimpleNet&background=0000ff&color=ffffff&style=flat">
+<img src="https://maven-badges.herokuapp.com/maven-central/com.arena_returns/SimpleNet/badge.svg"> <img src="http://githubbadges.com/star.svg?user=ArenaReturns&repo=SimpleNet&background=0000ff&color=ffffff&style=flat">
 
 ### This is a fork of jhg023's SimpleNet library tweaked for  use in Arena Returns server engine.
 
@@ -11,7 +11,7 @@ Maven:
 
 ```xml
 <dependency>
-    <groupId>com.arenareturns</groupId>
+    <groupId>com.arena_returns</groupId>
     <artifactId>SimpleNet</artifactId>
     <version>1.6.6</version>
 </dependency>
@@ -20,14 +20,14 @@ Maven:
 Gradle:
 
 ```groovy
-implementation 'com.arenareturns:SimpleNet:1.6.6'
+implementation 'com.arena_returns:SimpleNet:1.6.6'
 ```
 
  2. Because SimpleNet is compiled with Java 11, you must first require its module in your `module-info.java`:
 
 ```java
 module my.project {
-    requires com.arenareturns.simplenet;
+    requires com.arena_returns.simplenet;
 }
 ```
 # What do I need to know before using SimpleNet?
