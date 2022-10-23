@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.arena_returns</groupId>
+    <groupId>com.arena-returns</groupId>
     <artifactId>SimpleNet</artifactId>
     <version>1.6.6</version>
 
@@ -23,7 +23,7 @@
         <developer>
             <name>Arena Returns</name>
             <email>contact@arena-returns.com</email>
-            <organization>com.arena_returns</organization>
+            <organization>com.arena-returns</organization>
             <organizationUrl>https://github.com/ArenaReturns/SimpleNet</organizationUrl>
         </developer>
         <developer>
