@@ -1,6 +1,6 @@
 module com.arena_returns.simplenet {
     requires org.slf4j;
-    requires com.github.pbbl;
+    requires com.arena_returns.pbbl;
 
     exports com.arena_returns.simplenet;
     exports com.arena_returns.simplenet.packet;
