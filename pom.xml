@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.jhg023</groupId>
+    <groupId>com.arenareturns</groupId>
     <artifactId>SimpleNet</artifactId>
     <version>1.6.6</version>
 
     <name>SimpleNet</name>
-    <description>An easy-to-use, event-driven, asynchronous, network application framework compiled with Java 11.</description>
-    <url>https://github.com/jhg023/SimpleNet</url>
+    <description>ArenaReturns' fork of SimpleNet, an easy-to-use, event-driven, asynchronous network application framework compiled with Java 11.</description>
+    <url>https://github.com/ArenaReturns/SimpleNet</url>
 
     <licenses>
         <license>
@@ -21,6 +21,12 @@
 
     <developers>
         <developer>
+            <name>Arena Returns</name>
+            <email>contact@arena-returns.com</email>
+            <organization>com.arenareturns</organization>
+            <organizationUrl>https://github.com/ArenaReturns/SimpleNet</organizationUrl>
+        </developer>
+        <developer>
             <name>Jacob Glickman</name>
             <email>jhg023@bucknell.edu</email>
             <organization>com.github.jhg023</organization>
@@ -29,9 +35,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/jhg023/SimpleNet.git</connection>
-        <developerConnection>scm:git:ssh://github.com:jhg023/SimpleNet.git</developerConnection>
-        <url>https://github.com/jhg023/SimpleNet</url>
+        <connection>scm:git:git://github.com/ArenaReturns/SimpleNet.git</connection>
+        <developerConnection>scm:git:ssh://github.com:ArenaReturns/SimpleNet.git</developerConnection>
+        <url>https://github.com/ArenaReturns/SimpleNet</url>
     </scm>
 
     <distributionManagement>

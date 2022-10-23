@@ -1,4 +1,6 @@
-<img src="https://maven-badges.herokuapp.com/maven-central/com.github.jhg023/SimpleNet/badge.svg"> <img src="http://githubbadges.com/star.svg?user=jhg023&repo=SimpleNet&background=0000ff&color=ffffff&style=flat">
+<img src="https://maven-badges.herokuapp.com/maven-central/com.arenareturns/SimpleNet/badge.svg"> <img src="http://githubbadges.com/star.svg?user=ArenaReturns&repo=SimpleNet&background=0000ff&color=ffffff&style=flat">
+
+### This is a fork of jhg023's SimpleNet library tweaked for  use in Arena Returns server engine.
 
 # What is SimpleNet?
 SimpleNet is a simplistic, client-server framework written in Java. One or more `Client` objects can connect to a `Server` and send data back-and-forth via TCP. Most methods that read data from the network are non-blocking and are invoked asynchronously when the requested data arrives. Not having to block a thread and wait for data is what makes SimpleNet scalable for different types of applications such as chat servers, multiplayer game servers, and so much more!
@@ -9,7 +11,7 @@ Maven:
 
 ```xml
 <dependency>
-    <groupId>com.github.jhg023</groupId>
+    <groupId>com.arenareturns</groupId>
     <artifactId>SimpleNet</artifactId>
     <version>1.6.6</version>
 </dependency>
@@ -18,14 +20,14 @@ Maven:
 Gradle:
 
 ```groovy
-implementation 'com.github.jhg023:SimpleNet:1.6.6'
+implementation 'com.arenareturns:SimpleNet:1.6.6'
 ```
 
  2. Because SimpleNet is compiled with Java 11, you must first require its module in your `module-info.java`:
 
 ```java
 module my.project {
-    requires com.github.simplenet;
+    requires com.arenareturns.simplenet;
 }
 ```
 # What do I need to know before using SimpleNet?
