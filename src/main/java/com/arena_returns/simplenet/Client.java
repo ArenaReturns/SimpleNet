@@ -514,6 +514,20 @@ public class Client extends AbstractReceiver<Runnable> implements Channeled<Asyn
     public final void postDisconnect(Runnable listener) {
         postDisconnectListeners.add(listener);
     }
+
+    /**
+     * Clear post disconnect listener that fires right after a {@link Client} disconnects from a {@link Server}.
+     */
+    public final void postDisconnect() {
+        postDisconnectListeners.clear();
+    }
+
+    /**
+     * Clear pre disconnect listener that fires right before a {@link Client} disconnects from a {@link Server}.
+     */
+    public final void preDisconnect() {
+        preDisconnectListeners.clear();
+    }
     
     @Override
     public void readUntil(int n, Predicate<ByteBuffer> predicate, ByteOrder order) {
