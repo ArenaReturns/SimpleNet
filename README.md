@@ -13,14 +13,14 @@ Maven:
 <dependency>
     <groupId>com.arena-returns</groupId>
     <artifactId>SimpleNet</artifactId>
-    <version>1.6.6</version>
+    <version>1.6.7</version>
 </dependency>
 ```
 
 Gradle:
 
 ```groovy
-implementation 'com.arena-returns:SimpleNet:1.6.6'
+implementation 'com.arena-returns:SimpleNet:1.6.7'
 ```
 
  2. Because SimpleNet is compiled with Java 11, you must first require its module in your `module-info.java`:
