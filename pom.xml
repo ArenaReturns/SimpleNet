@@ -6,7 +6,7 @@
 
     <groupId>com.arena-returns</groupId>
     <artifactId>SimpleNet</artifactId>
-    <version>1.6.8-SNAPSHOT</version>
+    <version>1.6.8</version>
 
     <name>SimpleNet</name>
     <description>ArenaReturns' fork of SimpleNet, an easy-to-use, event-driven, asynchronous network application framework compiled with Java 11.</description>
