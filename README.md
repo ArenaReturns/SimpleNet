@@ -13,14 +13,14 @@ Maven:
 <dependency>
     <groupId>com.arena-returns</groupId>
     <artifactId>SimpleNet</artifactId>
-    <version>1.6.8</version>
+    <version>1.7.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```groovy
-implementation 'com.arena-returns:SimpleNet:1.6.8'
+implementation 'com.arena-returns:SimpleNet:1.7.0'
 ```
 
  2. Because SimpleNet is compiled with Java 11, you must first require its module in your `module-info.java`:
@@ -49,7 +49,7 @@ Packet.builder().putByte(42).putByte(42).queueAndFlush(client);
 
 // Create two packets with the specified data and queue them (but don't flush) to a client.
 Packet.builder().putInt(123456).queue(client);
-Packet.builder().putString("Hello World!").queue(client);
+Packet.builder().putShortSizedString("Hello World!").queue(client);
 
 // Flush the queued packets to the client (these packets will be transformed into a single,
 // big packet to improve throughput.
@@ -140,7 +140,7 @@ public class ChatServer {
                     case 2: // Send message to connected clients.
                         client.readString(message -> {
                             message = nicknameMap.get(client) + ": " + message;
-                            server.queueAndFlushToAllExcept(Packet.builder().putString(message), client);
+                            server.queueAndFlushToAllExcept(Packet.builder().putShortSizedString(message), client);
                         });
                         break;    
                 }
@@ -167,7 +167,7 @@ public class ChatClient {
             client.readStringAlways(System.out::println);
             
             System.out.print("Enter your nickname: ");
-            Packet.builder().putByte(1).putString(scanner.nextLine()).queueAndFlush(client);
+            Packet.builder().putByte(1).putShortSizedString(scanner.nextLine()).queueAndFlush(client);
             
             // Infinite loop to accept user-input for the chat server.
             while (true) {
@@ -183,7 +183,7 @@ public class ChatClient {
                 }
                 
                 // Otherwise, send a packet to the server containing the client's message.
-                Packet.builder().putByte(2).putString(message).queueAndFlush(client);
+                Packet.builder().putByte(2).putShortSizedString(message).queueAndFlush(client);
             }
         });
         

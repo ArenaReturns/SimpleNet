@@ -276,6 +276,38 @@ public final class Packet {
     }
 
     /**
+     * Writes a single {@link StandardCharsets#UTF_8}-encoded {@link String} to this {@link Packet}'s payload.
+     * <br><br>
+     * The {@link String} can have a maximum length of {@code 255}.
+     *
+     * @param s The {@link String} to write.
+     * @return The {@link Packet} to allow for chained writes.
+     * @see #putByteSizedString(String, Charset)
+     */
+    public Packet putByteSizedString(String s) {
+        return putByteSizedString(s, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * Writes a single {@link String} encoded with the specified {@link Charset} to this
+     * {@link Packet}'s payload.
+     * <br><br>
+     * A {@code byte} is used to store the length of the {@link String} in the payload header, which imposes a
+     * maximum {@link String} length of {@code 255} with a {@link StandardCharsets#UTF_8} encoding or
+     * {@code 128} (or less) with a different encoding.
+     *
+     * @param s       The {@link String} to write.
+     * @param charset The {@link Charset} of the {@link String} being written.
+     * @return The {@link Packet} to allow for chained writes.
+     */
+    public Packet putByteSizedString(String s, Charset charset) {
+        var bytes = s.getBytes(charset);
+        putByte(bytes.length);
+        putBytes(bytes);
+        return this;
+    }
+
+    /**
      * Writes a single {@link StandardCharsets#UTF_8}-encoded {@link String} with {@link ByteOrder#BIG_ENDIAN} order to
      * this {@link Packet}'s payload.
      * <br><br>
@@ -283,12 +315,12 @@ public final class Packet {
      *
      * @param s The {@link String} to write.
      * @return The {@link Packet} to allow for chained writes.
-     * @see #putString(String, Charset, ByteOrder)
+     * @see #putShortSizedString(String, Charset, ByteOrder)
      */
-    public Packet putString(String s) {
-        return putString(s, StandardCharsets.UTF_8, ByteOrder.BIG_ENDIAN);
+    public Packet putShortSizedString(String s) {
+        return putShortSizedString(s, StandardCharsets.UTF_8, ByteOrder.BIG_ENDIAN);
     }
-    
+
     /**
      * Writes a single {@link String} encoded with the specified {@link Charset} and {@link ByteOrder#BIG_ENDIAN}
      * order to this {@link Packet}'s payload.
@@ -300,10 +332,10 @@ public final class Packet {
      * @param s       The {@link String} write.
      * @param charset The {@link Charset} of the {@link String} being written.
      * @return The {@link Packet} to allow for chained writes.
-     * @see #putString(String, Charset, ByteOrder)
+     * @see #putShortSizedString(String, Charset, ByteOrder)
      */
-    public Packet putString(String s, Charset charset) {
-        return putString(s, charset, ByteOrder.BIG_ENDIAN);
+    public Packet putShortSizedString(String s, Charset charset) {
+        return putShortSizedString(s, charset, ByteOrder.BIG_ENDIAN);
     }
     
     /**
@@ -319,9 +351,60 @@ public final class Packet {
      * @param order   The internal byte order of the {@link String}.
      * @return The {@link Packet} to allow for chained writes.
      */
-    public Packet putString(String s, Charset charset, ByteOrder order) {
+    public Packet putShortSizedString(String s, Charset charset, ByteOrder order) {
         var bytes = s.getBytes(charset);
         putShort(bytes.length, order);
+        putBytes(bytes);
+        return this;
+    }
+
+    /**
+     * Writes a single {@link StandardCharsets#UTF_8}-encoded {@link String} with {@link ByteOrder#BIG_ENDIAN} order to
+     * this {@link Packet}'s payload.
+     * <br><br>
+     * The {@link String} can have a maximum length of {@code 4,294,967,294}.
+     *
+     * @param s The {@link String} to write.
+     * @return The {@link Packet} to allow for chained writes.
+     * @see #putIntSizedString(String, Charset, ByteOrder)
+     */
+    public Packet putIntSizedString(String s) {
+        return putIntSizedString(s, StandardCharsets.UTF_8, ByteOrder.BIG_ENDIAN);
+    }
+
+    /**
+     * Writes a single {@link String} encoded with the specified {@link Charset} and {@link ByteOrder#BIG_ENDIAN}
+     * order to this {@link Packet}'s payload.
+     * <br><br>
+     * An {@code int} is used to store the length of the {@link String} in the payload header, which imposes a
+     * maximum {@link String} length of {@code 4,294,967,294} with a {@link StandardCharsets#UTF_8} encoding or
+     * {@code 2,147,483,647} (or less) with a different encoding.
+     *
+     * @param s       The {@link String} write.
+     * @param charset The {@link Charset} of the {@link String} being written.
+     * @return The {@link Packet} to allow for chained writes.
+     * @see #putIntSizedString(String, Charset, ByteOrder)
+     */
+    public Packet putIntSizedString(String s, Charset charset) {
+        return putIntSizedString(s, charset, ByteOrder.BIG_ENDIAN);
+    }
+
+    /**
+     * Writes a single {@link String} encoded with the specified {@link Charset} and {@link ByteOrder} to this
+     * {@link Packet}'s payload.
+     * <br><br>
+     * An {@code int} is used to store the length of the {@link String} in the payload header, which imposes a
+     * maximum {@link String} length of {@code 4,294,967,294} with a {@link StandardCharsets#UTF_8} encoding or
+     * {@code 2,147,483,647} (or less) with a different encoding.
+     *
+     * @param s       The {@link String} to write.
+     * @param charset The {@link Charset} of the {@link String} being written.
+     * @param order   The internal byte order of the {@link String}.
+     * @return The {@link Packet} to allow for chained writes.
+     */
+    public Packet putIntSizedString(String s, Charset charset, ByteOrder order) {
+        var bytes = s.getBytes(charset);
+        putInt(bytes.length, order);
         putBytes(bytes);
         return this;
     }

@@ -406,7 +406,7 @@ final class ReadTest {
     }
     
     private void readStringHelper(String s, Charset charset, ByteOrder order) {
-        client.onConnect(() -> Packet.builder().putString(s, charset, order).queueAndFlush(client));
+        client.onConnect(() -> Packet.builder().putShortSizedString(s, charset, order).queueAndFlush(client));
         server.onConnect(client -> client.readString(readString -> {
             Assertions.assertEquals(s, readString);
             latch.countDown();

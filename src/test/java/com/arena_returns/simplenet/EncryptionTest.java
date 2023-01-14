@@ -145,7 +145,7 @@ final class EncryptionTest {
         client.onConnect(() -> {
             client.setEncryption(ciphers[2], encryption);
             client.setDecryption(ciphers[3], decryption);
-            Packet.builder().putBytes(encryptBytes).putString("Hello World!").putLong(54735436752L).putDouble(23.1231)
+            Packet.builder().putBytes(encryptBytes).putShortSizedString("Hello World!").putLong(54735436752L).putDouble(23.1231)
                 .putByte(0x00).queueAndFlush(client);
         });
 

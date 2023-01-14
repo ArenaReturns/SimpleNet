@@ -6,7 +6,7 @@
 
     <groupId>com.arena-returns</groupId>
     <artifactId>SimpleNet</artifactId>
-    <version>1.6.8</version>
+    <version>1.7.0</version>
 
     <name>SimpleNet</name>
     <description>ArenaReturns' fork of SimpleNet, an easy-to-use, event-driven, asynchronous network application framework compiled with Java 11.</description>
@@ -54,7 +54,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <junit.jupiter.version>5.9.1</junit.jupiter.version>
+        <junit.jupiter.version>5.9.2</junit.jupiter.version>
     </properties>
 
     <dependencies>
@@ -84,7 +84,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.3</version>
+            <version>2.0.6</version>
         </dependency>
     </dependencies>
 

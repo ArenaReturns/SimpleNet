@@ -269,7 +269,7 @@ final class PacketTest {
     @ParameterizedTest
     @ValueSource(strings = { "Hello World!" })
     void testPutStringBigEndianUTF8IntoPacket(String s) {
-        packet.putString(s);
+        packet.putShortSizedString(s);
         
         byte[] bytes = s.getBytes(StandardCharsets.UTF_8);
         short length = (short) bytes.length;
@@ -291,7 +291,7 @@ final class PacketTest {
     @ParameterizedTest
     @ValueSource(strings = { "Hello World!" })
     void testPutStringBigEndianUTF16IntoPacket(String s) {
-        packet.putString(s, StandardCharsets.UTF_16);
+        packet.putShortSizedString(s, StandardCharsets.UTF_16);
     
         byte[] bytes = s.getBytes(StandardCharsets.UTF_16);
         short length = (short) bytes.length;
@@ -313,7 +313,7 @@ final class PacketTest {
     @ParameterizedTest
     @ValueSource(strings = { "Hello World!" })
     void testPutStringLittleEndianUTF8IntoPacket(String s) {
-        packet.putString(s, StandardCharsets.UTF_8, ByteOrder.LITTLE_ENDIAN);
+        packet.putShortSizedString(s, StandardCharsets.UTF_8, ByteOrder.LITTLE_ENDIAN);
     
         byte[] bytes = s.getBytes(StandardCharsets.UTF_8);
         short length = (short) bytes.length;
@@ -336,7 +336,7 @@ final class PacketTest {
     @ParameterizedTest
     @ValueSource(strings = { "Hello World!" })
     void testPutStringLittleEndianUTF16IntoPacket(String s) {
-        packet.putString(s, StandardCharsets.UTF_16, ByteOrder.LITTLE_ENDIAN);
+        packet.putShortSizedString(s, StandardCharsets.UTF_16, ByteOrder.LITTLE_ENDIAN);
         
         byte[] bytes = s.getBytes(StandardCharsets.UTF_16);
         short length = (short) bytes.length;
