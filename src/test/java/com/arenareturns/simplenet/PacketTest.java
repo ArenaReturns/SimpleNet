@@ -75,6 +75,40 @@ final class PacketTest {
         Assertions.assertEquals(-25, buffer.get());
         Assertions.assertEquals(75, buffer.get());
     }
+
+    @Test
+    void testPutShortSizedBytesIntoPacket() {
+        packet.putShortSizedBytes((byte) 42, (byte) 123, (byte) -25, (byte) 75);
+
+        Assertions.assertEquals(packet.getSize(), Short.BYTES + (Byte.BYTES * 4));
+        Assertions.assertEquals(packet.getQueue().size(), 1);
+
+        ByteBuffer buffer = ByteBuffer.allocate(Short.BYTES + (Byte.BYTES * 4));
+        packet.getQueue().poll().accept(buffer);
+        buffer.flip();
+        Assertions.assertEquals(4, buffer.getShort());
+        Assertions.assertEquals(42, buffer.get());
+        Assertions.assertEquals(123, buffer.get());
+        Assertions.assertEquals(-25, buffer.get());
+        Assertions.assertEquals(75, buffer.get());
+    }
+
+    @Test
+    void testPutIntSizedBytesIntoPacket() {
+        packet.putIntSizedBytes((byte) 42, (byte) 123, (byte) -25, (byte) 75);
+
+        Assertions.assertEquals(packet.getSize(), Integer.BYTES + (Byte.BYTES * 4));
+        Assertions.assertEquals(packet.getQueue().size(), 1);
+
+        ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES + (Byte.BYTES * 4));
+        packet.getQueue().poll().accept(buffer);
+        buffer.flip();
+        Assertions.assertEquals(4, buffer.getInt());
+        Assertions.assertEquals(42, buffer.get());
+        Assertions.assertEquals(123, buffer.get());
+        Assertions.assertEquals(-25, buffer.get());
+        Assertions.assertEquals(75, buffer.get());
+    }
     
     @ParameterizedTest
     @ValueSource(strings = { "true", "false" })
