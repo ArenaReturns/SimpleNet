@@ -137,6 +137,36 @@ public final class Packet {
     }
 
     /**
+     * Writes a variable amount of {@code byte}s to this {@link Packet}'s payload.
+     * Also writes the length of the {@code byte} array as a {@code short} before the payload.
+     *
+     * @param src A variable amount of {@code byte}s.
+     * @return The {@link Packet} to allow for chained writes.
+     */
+    public Packet putShortSizedBytes(byte... src) {
+        size += Short.BYTES + (Byte.BYTES * src.length);
+        return enqueue(buffer -> {
+            buffer.putShort((short) src.length);
+            buffer.put(src);
+        });
+    }
+
+    /**
+     * Writes a variable amount of {@code byte}s to this {@link Packet}'s payload.
+     * Also writes the length of the {@code byte} array as an {@code int} before the payload.
+     *
+     * @param src A variable amount of {@code byte}s.
+     * @return The {@link Packet} to allow for chained writes.
+     */
+    public Packet putIntSizedBytes(byte... src) {
+        size += Integer.BYTES + (Byte.BYTES * src.length);
+        return enqueue(buffer -> {
+            buffer.putInt(src.length);
+            buffer.put(src);
+        });
+    }
+
+    /**
      * Writes a single {@code char} with {@link ByteOrder#BIG_ENDIAN} order to this {@link Packet}'s payload.
      *
      * @param c A {@code char}.
