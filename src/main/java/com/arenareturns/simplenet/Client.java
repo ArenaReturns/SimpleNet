@@ -39,6 +39,7 @@ import com.arenareturns.simplenet.utility.exposed.data.FloatReader;
 import com.arenareturns.simplenet.utility.exposed.data.IntReader;
 import com.arenareturns.simplenet.utility.exposed.data.LongReader;
 import com.arenareturns.simplenet.utility.exposed.data.StringReader;
+import jdk.net.ExtendedSocketOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -419,7 +420,10 @@ public class Client extends AbstractReceiver<Runnable> implements Channeled<Asyn
             this.channel = AsynchronousSocketChannel.open(group = AsynchronousChannelGroup.withThreadPool(executor));
             this.channel.setOption(StandardSocketOptions.SO_RCVBUF, BUFFER_SIZE);
             this.channel.setOption(StandardSocketOptions.SO_SNDBUF, BUFFER_SIZE);
-            this.channel.setOption(StandardSocketOptions.SO_KEEPALIVE, false);
+            this.channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
+            this.channel.setOption(ExtendedSocketOptions.TCP_KEEPCOUNT, 3);
+            this.channel.setOption(ExtendedSocketOptions.TCP_KEEPIDLE, 30);
+            this.channel.setOption(ExtendedSocketOptions.TCP_KEEPINTERVAL, 5);
             this.channel.setOption(StandardSocketOptions.TCP_NODELAY, true);
         } catch (IOException e) {
             throw new IllegalStateException("Unable to open the channel!", e);
