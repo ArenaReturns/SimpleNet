@@ -46,6 +46,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import jdk.net.ExtendedSocketOptions;
 
 /**
  * The entity that all {@link Client}s will connect to.
@@ -138,6 +139,16 @@ public class Server extends AbstractReceiver<Consumer<Client>> implements Channe
             channel.accept(null, new CompletionHandler<AsynchronousSocketChannel, Void>() {
                 @Override
                 public void completed(AsynchronousSocketChannel channel, Void attachment) {
+                    try {
+                        // Configure TCP keepalive settings for the client connection
+                        channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
+                        channel.setOption(ExtendedSocketOptions.TCP_KEEPCOUNT, 3);
+                        channel.setOption(ExtendedSocketOptions.TCP_KEEPIDLE, 30);
+                        channel.setOption(ExtendedSocketOptions.TCP_KEEPINTERVAL, 5);
+                    } catch (IOException e) {
+                        LOGGER.warn("Failed to set keepalive options on client socket", e);
+                    }
+                    
                     Client client = new Client(channel);
                     connectedClients.add(client);
                     client.postDisconnect(() -> connectedClients.remove(client));
