@@ -146,7 +146,7 @@ public class Server extends AbstractReceiver<Consumer<Client>> implements Channe
                         channel.setOption(ExtendedSocketOptions.TCP_KEEPIDLE, 30);
                         channel.setOption(ExtendedSocketOptions.TCP_KEEPINTERVAL, 5);
                     } catch (IOException e) {
-                        LOGGER.debug("Failed to set keepalive options on client socket", e);
+                        LOGGER.warn("Failed to set keepalive options on client socket", e);
                     }
                     
                     Client client = new Client(channel);
